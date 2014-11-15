@@ -1,5 +1,5 @@
 const _ = require('lodash-next');
-const recase = require('recase');
+const recase = require('change-case');
 
 function extractStyle(selector, reactStyle) {
   let rules = Object.keys(reactStyle).map((attr) => `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`).join('\n');
