@@ -2,32 +2,28 @@
 
 require("6to5/polyfill");
 var Promise = require("bluebird");
-var co = require("co");
-co(regeneratorRuntime.mark(function callee$0$0() {
-  var myWorld;
-  return regeneratorRuntime.wrap(function callee$0$0$(context$1$0) {
-    while (1) switch (context$1$0.prev = context$1$0.next) {case 0:
-        myWorld = "world";
+var _ = require("lodash-next");
+var recase = require("recase");
 
-        console.warn((function () {
-          return "Hello " + myWorld;
-        })());
-        context$1$0.next = 4;
-        return new Promise(function (resolve, reject) {
-          return resolve(42);
-        });
+function extractStyle(selector, reactStyle) {
+  var rules = Object.keys(reactStyle).map(function (attr) {
+    return "  " + recase.paramCase(attr) + ": " + reactStyle[attr] + ";";
+  }).join("\n");
+  return "" + selector + ": {\\n" + rules + "\\n}\\n";
+}
 
-      case 4:
-        context$1$0.t0 = context$1$0.sent;
-        console.warn(context$1$0.t0);
+function extractStyles(Component) {
+  if (!_.isObject(Component) || !Component.styles || !_.isObject(Component.styles)) {
+    return null;
+  }
+  return "/* From " + Component.displayName + ".styles: */\\n" + Object.keys(Component.styles).map(function (selector) {
+    return extractStyle(selector, Component.statics.styles[selector]);
+  }).join("\n");
+}
 
-        return context$1$0.abrupt("return", 1337);
+function extractAllStyles(Components) {
+  return _.without(_.map(Components, extractStyles), null).join("\n");
+}
 
-      case 7:
-      case "end": return context$1$0.stop();
-    }
-  }, callee$0$0, this);
-})).call(null, function (err, res) {
-  return console.warn(err, res);
-});
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImc6L21pc2MvbXktc3RhcnRlcmtpdC9zcmMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxPQUFPLENBQUMsZUFBZSxDQUFDLENBQUM7QUFDekIsSUFBSSxPQUFPLEdBQUcsT0FBTyxDQUFDLFVBQVUsQ0FBQyxDQUFDO0FBQ2xDLElBQUksRUFBRSxHQUFHLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUN2QixFQUFFLHlCQUFDO01BQ0csT0FBTzs7O0FBQVAsZUFBTyxHQUFHLE9BQU87O0FBQ3JCLGVBQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQzs0QkFBZSxPQUFPO1NBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQzs7ZUFDeEIsSUFBSSxPQUFPLENBQUMsVUFBQyxPQUFPLEVBQUUsTUFBTTtpQkFBSyxPQUFPLENBQUMsRUFBRSxDQUFDO1NBQUEsQ0FBQzs7OztBQUFoRSxlQUFPLENBQUMsSUFBSTs7NENBQ0wsSUFBSTs7Ozs7O0NBQ1osRUFBQyxDQUFDLElBQUksQ0FBQyxJQUFJLEVBQUUsVUFBQyxHQUFHLEVBQUUsR0FBRztTQUFLLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQztDQUFBLENBQUMsQ0FBQyIsImZpbGUiOiJpbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbInJlcXVpcmUoJzZ0bzUvcG9seWZpbGwnKTtcbnZhciBQcm9taXNlID0gcmVxdWlyZSgnYmx1ZWJpcmQnKTtcbnZhciBjbyA9IHJlcXVpcmUoJ2NvJyk7XG5jbyhmdW5jdGlvbiooKSB7XG4gIGxldCBteVdvcmxkID0gJ3dvcmxkJztcbiAgY29uc29sZS53YXJuKCgoKSA9PiBgSGVsbG8gJHtteVdvcmxkfWApKCkpO1xuICBjb25zb2xlLndhcm4oeWllbGQgbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4gcmVzb2x2ZSg0MikpKTtcbiAgcmV0dXJuIDEzMzc7XG59KS5jYWxsKG51bGwsIChlcnIsIHJlcykgPT4gY29uc29sZS53YXJuKGVyciwgcmVzKSk7XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+module.exports = _.extend(extractAllStyles, { extractStyle: extractStyle, extractStyles: extractStyles, extractAllStyles: extractAllStyles });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImc6L3JlYWN0LW5leHVzL3JlYWN0LW5leHVzLXN0eWxlL3NyYy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLE9BQU8sQ0FBQyxlQUFlLENBQUMsQ0FBQztBQUN6QixJQUFJLE9BQU8sR0FBRyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUM7QUFDbEMsSUFBTSxDQUFDLEdBQUcsT0FBTyxDQUFDLGFBQWEsQ0FBQyxDQUFDO0FBQ2pDLElBQU0sTUFBTSxHQUFHLE9BQU8sQ0FBQyxRQUFRLENBQUMsQ0FBQzs7QUFFakMsU0FBUyxZQUFZLENBQUMsUUFBUSxFQUFFLFVBQVUsRUFBRTtBQUMxQyxNQUFJLEtBQUssR0FBRyxNQUFNLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxVQUFDLElBQUk7a0JBQVUsTUFBTSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsVUFBSyxVQUFVLENBQUMsSUFBSSxDQUFDO0dBQUcsQ0FBQyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUNsSCxjQUFVLFFBQVEsY0FBUSxLQUFLLGFBQVE7Q0FDeEM7O0FBRUQsU0FBUyxhQUFhLENBQUMsU0FBUyxFQUFFO0FBQ2hDLE1BQUcsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLFNBQVMsQ0FBQyxJQUNyQixDQUFDLFNBQVMsQ0FBQyxNQUFNLElBQ2pCLENBQUMsQ0FBQyxDQUFDLFFBQVEsQ0FBQyxTQUFTLENBQUMsTUFBTSxDQUFDLEVBQUU7QUFDakMsV0FBTyxJQUFJLENBQUM7R0FDYjtBQUNELFNBQU8sYUFBVyxTQUFTLENBQUMsV0FBVyxzQkFBa0IsTUFBTSxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBTSxDQUFDLENBQ3JGLEdBQUcsQ0FBQyxVQUFDLFFBQVE7V0FBSyxZQUFZLENBQUMsUUFBUSxFQUFFLFNBQVMsQ0FBQyxPQUFPLENBQUMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDO0dBQUEsQ0FBQyxDQUM3RSxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUM7Q0FDYjs7QUFFRCxTQUFTLGdCQUFnQixDQUFDLFVBQVUsRUFBRTtBQUNwQyxTQUFPLENBQUMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxVQUFVLEVBQUUsYUFBYSxDQUFDLEVBQUUsSUFBSSxDQUFDLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDO0NBQ3JFOztBQUVELE1BQU0sQ0FBQyxPQUFPLEdBQUcsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxnQkFBZ0IsRUFBRSxFQUFFLFlBQVksRUFBWixZQUFZLEVBQUUsYUFBYSxFQUFiLGFBQWEsRUFBRSxnQkFBZ0IsRUFBaEIsZ0JBQWdCLEVBQUUsQ0FBQyxDQUFDIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsicmVxdWlyZSgnNnRvNS9wb2x5ZmlsbCcpO1xudmFyIFByb21pc2UgPSByZXF1aXJlKCdibHVlYmlyZCcpO1xuY29uc3QgXyA9IHJlcXVpcmUoJ2xvZGFzaC1uZXh0Jyk7XG5jb25zdCByZWNhc2UgPSByZXF1aXJlKCdyZWNhc2UnKTtcblxuZnVuY3Rpb24gZXh0cmFjdFN0eWxlKHNlbGVjdG9yLCByZWFjdFN0eWxlKSB7XG4gIGxldCBydWxlcyA9IE9iamVjdC5rZXlzKHJlYWN0U3R5bGUpLm1hcCgoYXR0cikgPT4gYCAgJHtyZWNhc2UucGFyYW1DYXNlKGF0dHIpfTogJHtyZWFjdFN0eWxlW2F0dHJdfTtgKS5qb2luKCdcXG4nKTtcbiAgcmV0dXJuIGAke3NlbGVjdG9yfToge1xcbiR7cnVsZXN9XFxufVxcbmA7XG59XG5cbmZ1bmN0aW9uIGV4dHJhY3RTdHlsZXMoQ29tcG9uZW50KSB7XG4gIGlmKCFfLmlzT2JqZWN0KENvbXBvbmVudCkgfHxcbiAgICAgICFDb21wb25lbnQuc3R5bGVzIHx8XG4gICAgICAhXy5pc09iamVjdChDb21wb25lbnQuc3R5bGVzKSkge1xuICAgIHJldHVybiBudWxsO1xuICB9XG4gIHJldHVybiBgLyogRnJvbSAke0NvbXBvbmVudC5kaXNwbGF5TmFtZX0uc3R5bGVzOiAqL1xcbmAgKyBPYmplY3Qua2V5cyhDb21wb25lbnQuc3R5bGVzKVxuICAubWFwKChzZWxlY3RvcikgPT4gZXh0cmFjdFN0eWxlKHNlbGVjdG9yLCBDb21wb25lbnQuc3RhdGljcy5zdHlsZXNbc2VsZWN0b3JdKSlcbiAgLmpvaW4oJ1xcbicpO1xufVxuXG5mdW5jdGlvbiBleHRyYWN0QWxsU3R5bGVzKENvbXBvbmVudHMpIHtcbiAgcmV0dXJuIF8ud2l0aG91dChfLm1hcChDb21wb25lbnRzLCBleHRyYWN0U3R5bGVzKSwgbnVsbCkuam9pbignXFxuJyk7XG59XG5cbm1vZHVsZS5leHBvcnRzID0gXy5leHRlbmQoZXh0cmFjdEFsbFN0eWxlcywgeyBleHRyYWN0U3R5bGUsIGV4dHJhY3RTdHlsZXMsIGV4dHJhY3RBbGxTdHlsZXMgfSk7XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
