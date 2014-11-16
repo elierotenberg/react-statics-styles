@@ -21,4 +21,5 @@ function extractAllStyles(Components) {
   return _.without(_.map(Components, extractStyles), null).join('\n');
 }
 
-module.exports = _.extend(extractAllStyles, { extractStyle, extractStyles, extractAllStyles });
+
+module.exports = { extractStyle, extractStyles, extractAllStyles };
