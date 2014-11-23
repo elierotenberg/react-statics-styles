@@ -28,11 +28,8 @@
     "jshint-stylish": "^1.0.0"
   },
   "dependencies": {
-    "6to5": "^1.13.1",
-    "bluebird": "^2.3.11",
+    "6to5": "^1.13.10",
     "change-case": "^2.1.5",
-    "co": "^4.0.0",
-    "lodash-next": "^1.7.0",
-    "should": "^4.3.0"
+    "lodash-next": "^1.8.0"
   }
 }
