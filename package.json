@@ -30,6 +30,6 @@
   "dependencies": {
     "6to5": "^1.13.10",
     "change-case": "^2.1.5",
-    "lodash-next": "^1.8.2"
+    "lodash-next": "^1.8.3"
   }
 }
