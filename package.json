@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/elierotenberg/react-nexus-style",
   "devDependencies": {
-    "del": "^0.1.3",
+    "del": "^1.1.0",
     "gulp": "^3.8.10",
     "gulp-insert": "^0.4.0",
     "gulp-jshint": "^1.9.0",
@@ -28,8 +28,8 @@
     "jshint-stylish": "^1.0.0"
   },
   "dependencies": {
-    "6to5": "^1.14.6",
+    "6to5": "^1.14.16",
     "change-case": "^2.1.5",
-    "lodash-next": "^1.9.0"
+    "lodash-next": "^1.9.1"
   }
 }

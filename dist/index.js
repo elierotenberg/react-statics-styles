@@ -7,14 +7,14 @@ function extractStyle(selector, reactStyle) {
   var rules = Object.keys(reactStyle).map(function (attr) {
     return "  " + recase.paramCase(attr) + ": " + reactStyle[attr] + ";";
   }).join("\n");
-  return "" + selector + ": {\r\n    " + rules + "\r\n  }\r\n  ";
+  return "" + selector + ": {\n    " + rules + "\n  }\n  ";
 }
 
 function extractStyles(Component) {
   if (!_.isObject(Component) || !Component.styles || !_.isObject(Component.styles)) {
     return null;
   }
-  return "/* From " + Component.displayName + ".styles: */\r\n  " + Object.keys(Component.styles).map(function (selector) {
+  return "/* From " + Component.displayName + ".styles: */\n  " + Object.keys(Component.styles).map(function (selector) {
     return extractStyle(selector, Component.styles[selector]);
   }).join("\n");
 }
