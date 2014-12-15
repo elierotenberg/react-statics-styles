@@ -19,7 +19,8 @@ var MyComponent = React.createClass({
   statics: {
     styles: {
       '.MyComponent .MyComponent-item': {
-        fontWeight: 'bold',
+        // you can put build-time calculations here
+        fontSize: 0.8 * readFontSizeFromConfig(),
       }
     }
   },
