@@ -37,9 +37,10 @@ Then pass one or more class definition(s) to `extractAllStyles`:
 require('react-nexus-style').extractAllStyles([MyComponent])
 ```
 
-this returns (roughly) the string containing:
+this returns the string containing:
 
 ```css
+/* @react-nexus-style MyComponent */
 .MyComponent .MyComponent-item {
   font-weight: 'bold';
 }

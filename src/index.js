@@ -15,7 +15,7 @@ function extractStyles(Component) {
       !_.isObject(Component.styles)) {
     return null;
   }
-  return `/* From ${Component.displayName}.styles: */
+  return `/* @react-nexus-style ${Component.displayName} */
   ` + Object.keys(Component.styles)
   .map((selector) => extractStyle(selector, Component.styles[selector]))
   .join('\n');
