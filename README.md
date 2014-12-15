@@ -20,14 +20,14 @@ var MyComponent = React.createClass({
     styles: {
       '.MyComponent .MyComponent-item': {
         // you can put build-time calculations here
-        fontSize: 0.8 * readFontSizeFromConfig(),
+        fontSize: 0.8 * readFontSizeFromConfig() + 'px',
       }
     }
   },
 
   render: function() {
     return <div className='MyComponent'>
-      <div className='MyComponent-item'>This is bold.</div>
+      <div className='MyComponent-item'>This is smaller that usual.</div>
     </div>;
   },
 });
@@ -38,12 +38,12 @@ Then pass one or more class definition(s) to `extractAllStyles`:
 require('react-nexus-style').extractAllStyles([MyComponent])
 ```
 
-this returns the string containing:
+Assuming that `readFontSizeFromConfig()` returns `10`, then this outputs the string:
 
 ```css
 /* @react-nexus-style MyComponent */
 .MyComponent .MyComponent-item {
-  font-weight: 'bold';
+  font-size: 8px;
 }
 ```
 
