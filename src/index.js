@@ -3,7 +3,7 @@ const recase = require('change-case');
 
 function extractStyle(selector, reactStyle) {
   let rules = Object.keys(reactStyle).map((attr) => `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`).join('\n');
-  return `${selector}: {
+  return `${selector} {
     ${rules}
   }
   `;

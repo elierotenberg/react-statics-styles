@@ -7,7 +7,7 @@ function extractStyle(selector, reactStyle) {
   var rules = Object.keys(reactStyle).map(function (attr) {
     return "  " + recase.paramCase(attr) + ": " + reactStyle[attr] + ";";
   }).join("\n");
-  return "" + selector + ": {\n    " + rules + "\n  }\n  ";
+  return "" + selector + " {\n    " + rules + "\n  }\n  ";
 }
 
 function extractStyles(Component) {
