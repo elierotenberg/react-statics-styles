@@ -1,12 +1,8 @@
-const _ = require('lodash-next');
-const recase = require('change-case');
+import recase from 'change-case';
 
 function extractStyle(selector, reactStyle) {
   let rules = Object.keys(reactStyle).map((attr) => `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`).join('\n');
-  return `${selector} {
-    ${rules}
-  }
-  `;
+  return `${selector} {\n${rules}\n}`;
 }
 
 function extractStyles(Component) {
@@ -15,10 +11,11 @@ function extractStyles(Component) {
       !_.isObject(Component.styles)) {
     return null;
   }
-  return `/* @react-nexus-style ${Component.displayName} */
-  ` + Object.keys(Component.styles)
-  .map((selector) => extractStyle(selector, Component.styles[selector]))
-  .join('\n');
+  return `/* @react-nexus-style ${Component.displayName} */\n${
+    Object.keys(Component.styles)
+    .map((selector) => extractStyle(selector, Component.styles[selector]))
+    .join('\n')
+  }\n`;
 }
 
 function extractAllStyles(Components) {
@@ -26,4 +23,4 @@ function extractAllStyles(Components) {
 }
 
 
-module.exports = { extractStyle, extractStyles, extractAllStyles };
+export default { extractStyle, extractStyles, extractAllStyles };
