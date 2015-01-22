@@ -29,8 +29,8 @@
     "react": "^0.12.2"
   },
   "dependencies": {
-    "6to5": "^2.13.3",
-    "bluebird": "^2.7.1",
+    "6to5": "^2.13.5",
+    "bluebird": "^2.8.2",
     "change-case": "^2.2.0",
     "lodash": "^2.4.1",
     "recase": "^1.0.4",
