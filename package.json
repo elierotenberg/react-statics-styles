@@ -1,5 +1,5 @@
 {
-  "name": "react-nexus-style",
+  "name": "react-statics-styles",
   "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elierotenberg/react-nexus-style.git"
+    "url": "https://github.com/elierotenberg/react-statics-styles.git"
   },
   "author": "Elie Rotenberg <elie@rotenberg.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elierotenberg/react-nexus-style/issues"
+    "url": "https://github.com/elierotenberg/react-statics-styles/issues"
   },
-  "homepage": "https://github.com/elierotenberg/react-nexus-style",
+  "homepage": "https://github.com/elierotenberg/react-statics-styles",
   "devDependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.10",
