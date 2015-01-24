@@ -29,7 +29,7 @@ function extractStyles(Component) {
   if (!_.isObject(Component) || !Component.styles || !_.isObject(Component.styles)) {
     return null;
   }
-  return "/* @react-nexus-style " + Component.displayName + " */\n" + Object.keys(Component.styles).map(function (selector) {
+  return "/* @react-statics-styles " + Component.displayName + " */\n" + Object.keys(Component.styles).map(function (selector) {
     return extractStyle(selector, Component.styles[selector]);
   }).join("\n") + "\n";
 }

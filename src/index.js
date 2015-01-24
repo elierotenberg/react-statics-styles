@@ -11,11 +11,9 @@ function extractStyles(Component) {
       !_.isObject(Component.styles)) {
     return null;
   }
-  return `/* @react-nexus-style ${Component.displayName} */\n${
-    Object.keys(Component.styles)
+  return `/* @react-statics-styles ${Component.displayName} */\n${Object.keys(Component.styles)
     .map((selector) => extractStyle(selector, Component.styles[selector]))
-    .join('\n')
-  }\n`;
+  .join('\n')}\n`;
 }
 
 function extractAllStyles(Components) {

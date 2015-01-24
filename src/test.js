@@ -21,4 +21,4 @@ const css = extractStyles(MyComponentClass);
 
 css.should.be.a.String;
 console.log(css);
-css.should.be.exactly('/* @react-nexus-style MyComponentClass */\n.MyComponent {\n  min-width: 180px;\n}\n');
+css.should.be.exactly('/* @react-statics-styles MyComponentClass */\n.MyComponent {\n  min-width: 180px;\n}\n');
