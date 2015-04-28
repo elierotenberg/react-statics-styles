@@ -1,7 +1,7 @@
 import recase from 'change-case';
 
 function extractStyle(selector, reactStyle) {
-  let rules = Object.keys(reactStyle).map((attr) => `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`).join('\n');
+  let rules = Object.keys(reactStyle).map((attr) => `${recase.paramCase(attr)}: ${reactStyle[attr]};`).join('\n');
   return `${selector} {\n${rules}\n}`;
 }
 
@@ -19,6 +19,5 @@ function extractStyles(Component) {
 function extractAllStyles(Components) {
   return _.without(_.map(Components, extractStyles), null).join('\n');
 }
-
 
 export default { extractStyle, extractStyles, extractAllStyles };

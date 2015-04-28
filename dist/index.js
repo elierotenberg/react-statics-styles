@@ -25,7 +25,7 @@ if (__DEV__) {
 
 function extractStyle(selector, reactStyle) {
   var rules = Object.keys(reactStyle).map(function (attr) {
-    return '  ' + _recase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';';
+    return '' + _recase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';';
   }).join('\n');
   return '' + selector + ' {\n' + rules + '\n}';
 }
