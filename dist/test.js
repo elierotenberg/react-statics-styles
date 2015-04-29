@@ -2,11 +2,15 @@
 
 var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _React = require('react');
-
-var _React2 = _interopRequireDefault(_React);
-
 var _extractStyles = require('../');
+
+var _CreateClassComponent = require('./test/CreateClassComponent');
+
+var _CreateClassComponent2 = _interopRequireDefault(_CreateClassComponent);
+
+var _ES6ClassComponent = require('./test/ES6ClassComponent');
+
+var _ES6ClassComponent2 = _interopRequireDefault(_ES6ClassComponent);
 
 require('babel/polyfill');
 var _ = require('lodash');
@@ -21,22 +25,6 @@ if (__DEV__) {
   Error.stackTraceLimit = Infinity;
 }
 
-var div = _React2['default'].createFactory('div');
+_extractStyles.extractStyles(_CreateClassComponent2['default']).should.be.exactly('/* @react-statics-styles CreateClassComponent */\n.CreateClassComponent {\n  min-width: 1337px;\n}\n');
 
-var MyComponentClass = _React2['default'].createClass({
-  displayName: 'MyComponentClass',
-
-  statics: {
-    styles: {
-      '.MyComponent': {
-        minWidth: '180px' } } },
-
-  render: function render() {
-    return div({ className: 'MyComponent' });
-  } });
-
-var css = _extractStyles.extractStyles(MyComponentClass);
-
-css.should.be.a.String;
-console.log(css);
-css.should.be.exactly('/* @react-statics-styles MyComponentClass */\n.MyComponent {\n  min-width: 180px;\n}\n');
+_extractStyles.extractStyles(_ES6ClassComponent2['default']).should.be.exactly('/* @react-statics-styles ES6ClassComponent */\n.ES6ClassComponent {\n  min-width: 42px;\n}\n');

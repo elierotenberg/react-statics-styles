@@ -1,24 +1,16 @@
-import React from 'react';
 import { extractStyles } from '../';
 
-const div = React.createFactory('div');
+import CreateClassComponent from './test/CreateClassComponent';
+import ES6ClassComponent from './test/ES6ClassComponent';
 
-const MyComponentClass = React.createClass({
-  statics: {
-    styles: {
-      '.MyComponent': {
-        minWidth: '180px',
-      },
-    },
-  },
+extractStyles(CreateClassComponent).should.be.exactly(`/* @react-statics-styles CreateClassComponent */
+.CreateClassComponent {
+  min-width: 1337px;
+}
+`);
 
-  render() {
-    return div({ className: 'MyComponent' });
-  },
-});
-
-const css = extractStyles(MyComponentClass);
-
-css.should.be.a.String;
-console.log(css);
-css.should.be.exactly('/* @react-statics-styles MyComponentClass */\n.MyComponent {\n  min-width: 180px;\n}\n');
+extractStyles(ES6ClassComponent).should.be.exactly(`/* @react-statics-styles ES6ClassComponent */
+.ES6ClassComponent {
+  min-width: 42px;
+}
+`);

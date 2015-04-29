@@ -35,6 +35,7 @@ function build() {
     .pipe(prepend(prelude))
     .pipe(babel({
       modules: 'common',
+      optional: ['es7.classProperties'],
     }))
     .pipe(gulp.dest('dist'));
   });
