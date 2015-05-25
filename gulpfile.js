@@ -1,4 +1,3 @@
-require('babel/polyfill');
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -35,7 +34,7 @@ function build() {
     .pipe(prepend(prelude))
     .pipe(babel({
       modules: 'common',
-      optional: ['es7.classProperties'],
+      optional: ['es7.classProperties', 'runtime'],
     }))
     .pipe(gulp.dest('dist'));
   });
