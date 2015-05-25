@@ -1,18 +1,17 @@
 'use strict';
 
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-var _extractStyles = require('../');
+var _2 = require('../');
 
-var _CreateClassComponent = require('./test/CreateClassComponent');
+var _testCreateClassComponent = require('./test/CreateClassComponent');
 
-var _CreateClassComponent2 = _interopRequireDefault(_CreateClassComponent);
+var _testCreateClassComponent2 = _interopRequireDefault(_testCreateClassComponent);
 
-var _ES6ClassComponent = require('./test/ES6ClassComponent');
+var _testES6ClassComponent = require('./test/ES6ClassComponent');
 
-var _ES6ClassComponent2 = _interopRequireDefault(_ES6ClassComponent);
+var _testES6ClassComponent2 = _interopRequireDefault(_testES6ClassComponent);
 
-require('babel/polyfill');
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -25,6 +24,6 @@ if (__DEV__) {
   Error.stackTraceLimit = Infinity;
 }
 
-_extractStyles.extractStyles(_CreateClassComponent2['default']).should.be.exactly('/* @react-statics-styles CreateClassComponent */\n.CreateClassComponent {\n  min-width: 1337px;\n}\n');
+(0, _2.extractStyles)(_testCreateClassComponent2['default']).should.be.exactly('/* @react-statics-styles CreateClassComponent */\n.CreateClassComponent {\n  min-width: 1337px;\n}\n');
 
-_extractStyles.extractStyles(_ES6ClassComponent2['default']).should.be.exactly('/* @react-statics-styles ES6ClassComponent */\n.ES6ClassComponent {\n  min-width: 42px;\n}\n');
+(0, _2.extractStyles)(_testES6ClassComponent2['default']).should.be.exactly('/* @react-statics-styles ES6ClassComponent */\n.ES6ClassComponent {\n  min-width: 42px;\n}\n');

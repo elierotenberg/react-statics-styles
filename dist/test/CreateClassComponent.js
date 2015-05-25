@@ -1,16 +1,17 @@
 'use strict';
 
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+var _Object$defineProperty = require('babel-runtime/core-js/object/define-property')['default'];
 
-Object.defineProperty(exports, '__esModule', {
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
+
+_Object$defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _React = require('react');
+var _react = require('react');
 
-var _React2 = _interopRequireDefault(_React);
+var _react2 = _interopRequireDefault(_react);
 
-require('babel/polyfill');
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -23,9 +24,9 @@ if (__DEV__) {
   Error.stackTraceLimit = Infinity;
 }
 
-var div = _React2['default'].createFactory('div');
+var div = _react2['default'].createFactory('div');
 
-exports['default'] = _React2['default'].createClass({
+exports['default'] = _react2['default'].createClass({
   displayName: 'CreateClassComponent',
   statics: {
     styles: {
