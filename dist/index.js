@@ -28,7 +28,11 @@ if (__DEV__) {
 
 function extractStyle(selector, reactStyle) {
   var rules = _Object$keys(reactStyle).map(function (attr) {
-    return '  ' + _changeCase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';' // eslint-disable-line no-multi-spaces
+    return (
+      /* eslint-disable no-multi-space */
+      '  ' + _changeCase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';'
+    )
+    /* eslint-enable no-multi-space */
     ;
   }).join('\n');
   return '' + selector + ' {\n' + rules + '\n}';

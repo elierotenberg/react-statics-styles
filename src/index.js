@@ -2,7 +2,9 @@ import recase from 'change-case';
 
 function extractStyle(selector, reactStyle) {
   let rules = Object.keys(reactStyle).map((attr) =>
-    `  ${recase.paramCase(attr)}: ${reactStyle[attr]};` // eslint-disable-line no-multi-spaces
+    /* eslint-disable no-multi-space */
+    `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`
+    /* eslint-enable no-multi-space */
   ).join('\n');
   return `${selector} {\n${rules}\n}`;
 }
