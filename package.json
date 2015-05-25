@@ -17,23 +17,24 @@
   },
   "homepage": "https://github.com/elierotenberg/react-statics-styles",
   "devDependencies": {
-    "babel-eslint": "^3.0.1",
-    "del": "^1.1.1",
-    "eslint-plugin-react": "^2.2.0",
+    "babel-eslint": "^3.1.9",
+    "del": "^1.2.0",
+    "eslint-plugin-react": "^2.3.0",
     "gulp": "^3.8.11",
     "gulp-babel": "^5.1.0",
-    "gulp-eslint": "^0.11.1",
+    "gulp-eslint": "^0.12.0",
     "gulp-insert": "^0.4.0",
-    "gulp-plumber": "^1.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.4",
-    "react": "^0.13.2"
+    "react": "^0.13.3"
   },
   "dependencies": {
-    "babel": "^5.1.13",
-    "bluebird": "^2.9.25",
+    "babel": "^5.4.7",
+    "babel-runtime": "^5.4.7",
+    "bluebird": "^2.9.26",
     "change-case": "^2.3.0",
-    "lodash": "^3.7.0",
-    "recase": "^1.0.4",
-    "should": "^6.0.1"
+    "lodash": "^3.9.2",
+    "should": "^6.0.3"
   }
 }

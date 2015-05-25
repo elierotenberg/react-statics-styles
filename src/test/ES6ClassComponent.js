@@ -8,7 +8,7 @@ export default class extends React.Component {
   static styles = {
       '.ES6ClassComponent': {
         minWidth: '42px',
-    }
+    },
   };
 
   render() {

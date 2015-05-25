@@ -1,16 +1,19 @@
 'use strict';
 
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+var _Object$defineProperty = require('babel-runtime/core-js/object/define-property')['default'];
 
-Object.defineProperty(exports, '__esModule', {
+var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
+
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
+
+_Object$defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _recase = require('change-case');
+var _changeCase = require('change-case');
 
-var _recase2 = _interopRequireDefault(_recase);
+var _changeCase2 = _interopRequireDefault(_changeCase);
 
-require('babel/polyfill');
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -24,8 +27,8 @@ if (__DEV__) {
 }
 
 function extractStyle(selector, reactStyle) {
-  var rules = Object.keys(reactStyle).map(function (attr) {
-    return '  ' + _recase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';' // eslint-disable-line no-multi-spaces
+  var rules = _Object$keys(reactStyle).map(function (attr) {
+    return '  ' + _changeCase2['default'].paramCase(attr) + ': ' + reactStyle[attr] + ';' // eslint-disable-line no-multi-spaces
     ;
   }).join('\n');
   return '' + selector + ' {\n' + rules + '\n}';
@@ -35,7 +38,7 @@ function extractStyles(Component) {
   if (!_.isObject(Component) || !Component.styles || !_.isObject(Component.styles)) {
     return null;
   }
-  return '/* @react-statics-styles ' + Component.displayName + ' */\n' + Object.keys(Component.styles).map(function (selector) {
+  return '/* @react-statics-styles ' + Component.displayName + ' */\n' + _Object$keys(Component.styles).map(function (selector) {
     return extractStyle(selector, Component.styles[selector]);
   }).join('\n') + '\n';
 }
