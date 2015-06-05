@@ -24,4 +24,13 @@ function extractAllStyles(Components) {
   return _.without(_.map(Components, extractStyles), null).join('\n');
 }
 
-export default { extractStyle, extractStyles, extractAllStyles };
+function styles(newStyles) {
+  return function(Component) {
+    const oldStyles = Component.styles || {};
+    return class extends Component {
+      static style = Object.assign({}, oldStyles, newStyles);
+    }
+  }
+}
+
+export default { extractStyle, extractStyles, extractAllStyles, styles };
