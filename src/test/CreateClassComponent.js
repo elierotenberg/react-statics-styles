@@ -2,7 +2,7 @@ import React from 'react';
 
 const div = React.createFactory('div');
 
-export default React.createClass({
+const CreateClassComponent = React.createClass({
   displayName: 'CreateClassComponent',
   statics: {
     styles: {
@@ -16,3 +16,5 @@ export default React.createClass({
     return div({ className: 'MyComponent' });
   },
 });
+
+export default CreateClassComponent;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const div = React.createFactory('div');
 
-export default class extends React.Component {
+class ES6ClassComponent extends React.Component {
   static displayName = 'ES6ClassComponent';
 
   static styles = {
@@ -15,3 +15,5 @@ export default class extends React.Component {
     return div({ className: 'MyComponent' });
   }
 }
+
+export default ES6ClassComponent;

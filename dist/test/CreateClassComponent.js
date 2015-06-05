@@ -26,14 +26,20 @@ if (__DEV__) {
 
 var div = _react2['default'].createFactory('div');
 
-exports['default'] = _react2['default'].createClass({
+var CreateClassComponent = _react2['default'].createClass({
   displayName: 'CreateClassComponent',
   statics: {
     styles: {
       '.CreateClassComponent': {
-        minWidth: '1337px' } } },
+        minWidth: '1337px'
+      }
+    }
+  },
 
   render: function render() {
     return div({ className: 'MyComponent' });
-  } });
+  }
+});
+
+exports['default'] = CreateClassComponent;
 module.exports = exports['default'];

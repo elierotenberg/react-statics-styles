@@ -18,6 +18,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _2 = require('../');
+
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -32,38 +34,37 @@ if (__DEV__) {
 
 var div = _react2['default'].createFactory('div');
 
-var ES6ClassComponent = (function (_React$Component) {
-  function ES6ClassComponent() {
-    _classCallCheck(this, ES6ClassComponent);
+var ES6ClassDecorator = (function (_React$Component) {
+  function ES6ClassDecorator() {
+    _classCallCheck(this, _ES6ClassDecorator);
 
     if (_React$Component != null) {
       _React$Component.apply(this, arguments);
     }
   }
 
-  _inherits(ES6ClassComponent, _React$Component);
+  _inherits(ES6ClassDecorator, _React$Component);
 
-  _createClass(ES6ClassComponent, [{
+  var _ES6ClassDecorator = ES6ClassDecorator;
+
+  _createClass(_ES6ClassDecorator, [{
     key: 'render',
     value: function render() {
       return div({ className: 'MyComponent' });
     }
   }], [{
     key: 'displayName',
-    value: 'ES6ClassComponent',
-    enumerable: true
-  }, {
-    key: 'styles',
-    value: {
-      '.ES6ClassComponent': {
-        minWidth: '42px'
-      }
-    },
+    value: 'ES6ClassDecorator',
     enumerable: true
   }]);
 
-  return ES6ClassComponent;
+  ES6ClassDecorator = (0, _2.styles)({
+    '.ES6ClassDecorator': {
+      minWidth: '42px'
+    }
+  })(ES6ClassDecorator) || ES6ClassDecorator;
+  return ES6ClassDecorator;
 })(_react2['default'].Component);
 
-exports['default'] = ES6ClassComponent;
+exports['default'] = ES6ClassDecorator;
 module.exports = exports['default'];

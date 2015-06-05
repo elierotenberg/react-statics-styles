@@ -1,7 +1,7 @@
 import recase from 'change-case';
 
 function extractStyle(selector, reactStyle) {
-  let rules = Object.keys(reactStyle).map((attr) =>
+  const rules = Object.keys(reactStyle).map((attr) =>
     /* eslint-disable no-multi-space */
     `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`
     /* eslint-enable no-multi-space */
@@ -25,12 +25,9 @@ function extractAllStyles(Components) {
 }
 
 function styles(newStyles) {
-  return function(Component) {
-    const oldStyles = Component.styles || {};
-    return class extends Component {
-      static style = Object.assign({}, oldStyles, newStyles);
-    }
-  }
+  return (Component) => class extends Component {
+    static styles = Object.assign({}, Component.styles || {}, newStyles);
+  };
 }
 
 export default { extractStyle, extractStyles, extractAllStyles, styles };
