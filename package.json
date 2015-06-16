@@ -2,38 +2,34 @@
   "name": "react-statics-styles",
   "version": "2.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "license": "MIT",
+  "author": "Elie Rotenberg <elie@rotenberg.io>",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/elierotenberg/react-statics-styles.git"
   },
-  "author": "Elie Rotenberg <elie@rotenberg.io>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/elierotenberg/react-statics-styles/issues"
   },
   "homepage": "https://github.com/elierotenberg/react-statics-styles",
+  "scripts": {
+    "test": "gulp test"
+  },
   "devDependencies": {
-    "babel-eslint": "^3.1.11",
-    "del": "^1.2.0",
-    "eslint": "^0.22.1",
-    "eslint-plugin-react": "^2.5.0",
+    "babel": "^5.5.8",
+    "babel-eslint": "^3.1.15",
+    "babel-runtime": "^5.5.8",
+    "eslint": "^0.23.0",
+    "eslint-plugin-react": "^2.5.2",
     "gulp": "^3.9.0",
-    "gulp-babel": "^5.1.0",
-    "gulp-eslint": "^0.13.0",
-    "gulp-insert": "^0.4.0",
+    "gulp-eslint": "^0.14.0",
+    "gulp-mocha": "^2.1.1",
     "gulp-plumber": "^1.0.1",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-util": "^3.0.5",
     "react": "^0.13.3"
   },
   "dependencies": {
-    "babel": "^5.4.7",
-    "babel-runtime": "^5.4.7",
-    "bluebird": "^2.9.27",
+    "bluebird": "^2.9.30",
     "change-case": "^2.3.0",
     "lodash": "^3.9.3",
     "should": "^6.0.3"

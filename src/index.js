@@ -1,4 +1,5 @@
 import recase from 'change-case';
+import _ from 'lodash';
 
 function extractStyle(selector, reactStyle) {
   const rules = Object.keys(reactStyle).map((attr) =>

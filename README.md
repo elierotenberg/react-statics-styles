@@ -58,3 +58,8 @@ Usage (with gulp)
 =================
 
 See [`gulp-react-statics-styles`](https://github.com/elierotenberg/gulp-react-statics-styles).
+
+
+### Installation
+
+This module is written in ES6/7. You will need `babel` to run it.

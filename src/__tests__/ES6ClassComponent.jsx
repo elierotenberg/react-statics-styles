@@ -12,7 +12,7 @@ class ES6ClassComponent extends React.Component {
   };
 
   render() {
-    return div({ className: 'MyComponent' });
+    return <div className='MyComponent' />;
   }
 }
 

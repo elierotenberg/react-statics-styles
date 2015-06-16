@@ -13,7 +13,7 @@ const CreateClassComponent = React.createClass({
   },
 
   render() {
-    return div({ className: 'MyComponent' });
+    return <div className='MyComponent' />;
   },
 });
 
