@@ -1,7 +1,5 @@
 import React from 'react';
 
-const div = React.createFactory('div');
-
 const CreateClassComponent = React.createClass({
   displayName: 'CreateClassComponent',
   statics: {

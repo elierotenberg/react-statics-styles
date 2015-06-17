@@ -1,8 +1,6 @@
 import React from 'react';
 import { styles } from '../';
 
-const div = React.createFactory('div');
-
 @styles({
   '.ES6ClassDecorator': {
     minWidth: '33px',

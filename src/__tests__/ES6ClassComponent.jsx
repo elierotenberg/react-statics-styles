@@ -1,7 +1,5 @@
 import React from 'react';
 
-const div = React.createFactory('div');
-
 class ES6ClassComponent extends React.Component {
   static displayName = 'ES6ClassComponent';
 
