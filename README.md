@@ -54,6 +54,34 @@ Assuming that `readFontSizeFromConfig()` returns `10`, then the first line retur
 }
 ```
 
+The decorator form supports passing additional options.
+
+The only currently supported option is `prefix`, a static string which will be preprended to all the generated selectors.
+
+```js
+@styles({
+  '.ES6ClassDecoratorWithPrefix': {
+    minWidth: '334px',
+  },
+}, { prefix: '.MyApp '})
+class ES6ClassDecoratorWithPrefix extends React.Component {
+  static displayName = 'ES6ClassDecoratorWithPrefix';
+
+  render() {
+    return <div className='MyComponent' />;
+  }
+}
+```
+
+will yield
+
+```css
+/* @react-statics-styles ES6ClassDecoratorWithPrefix */
+.MyApp .ES6ClassDecoratorWithPrefix {
+  min-width: 334px;
+}
+```
+
 Usage (with gulp)
 =================
 

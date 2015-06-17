@@ -1,13 +1,15 @@
 import recase from 'change-case';
 import _ from 'lodash';
 
-function extractStyle(selector, reactStyle) {
+const stylesOpts = Symbol('stylesOpts');
+
+function extractStyle(selector, reactStyle, { prefix = '' } = {}) {
   const rules = Object.keys(reactStyle).map((attr) =>
     /* eslint-disable no-multi-space */
     `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`
     /* eslint-enable no-multi-space */
   ).join('\n');
-  return `${selector} {\n${rules}\n}`;
+  return `${prefix}${selector} {\n${rules}\n}`;
 }
 
 function extractStyles(Component) {
@@ -17,7 +19,7 @@ function extractStyles(Component) {
     return null;
   }
   return `/* @react-statics-styles ${Component.displayName} */\n${Object.keys(Component.styles)
-    .map((selector) => extractStyle(selector, Component.styles[selector]))
+    .map((selector) => extractStyle(selector, Component.styles[selector], Component[stylesOpts]))
   .join('\n')}\n`;
 }
 
@@ -25,10 +27,10 @@ function extractAllStyles(Components) {
   return _.without(_.map(Components, extractStyles), null).join('\n');
 }
 
-function styles(newStyles) {
-  return (Component) => class extends Component {
+function styles(newStyles, opts) {
+  return (Component) => Object.assign(class extends Component {
     static styles = Object.assign({}, Component.styles || {}, newStyles);
-  };
+  }, { [stylesOpts]: opts })
 }
 
-export default { extractStyle, extractStyles, extractAllStyles, styles };
+export default { extractStyle, extractStyles, extractAllStyles, styles, stylesOpts };
