@@ -4,11 +4,11 @@ import _ from 'lodash';
 const stylesOpts = Symbol('stylesOpts');
 
 function extractStyle(selector, reactStyle, { prefix = '' } = {}) {
-  const rules = Object.keys(reactStyle).map((attr) =>
-    /* eslint-disable no-multi-space */
-    `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`
-    /* eslint-enable no-multi-space */
-  ).join('\n');
+  const rules = Object.keys(reactStyle).map((attr) => {
+    return selector.indexOf('keyframes') > -1
+    ? `  ${recase.paramCase(attr)} ${reactStyle[attr]}`
+    : `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`;
+  }).join('\n');
   return `${prefix}${selector} {\n${rules}\n}`;
 }
 
