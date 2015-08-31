@@ -3,12 +3,20 @@ import _ from 'lodash';
 
 const stylesOpts = Symbol('stylesOpts');
 
+function extractKeyframes(keyframe, prefix) {
+  const rulesKeyframe = Object.keys(keyframe).map((attr) => {
+    return `    ${prefix}${attr}: ${keyframe[attr]};`;
+  }).join('\n');
+
+  return `{\n${rulesKeyframe}\n  }`;
+}
+
 function extractStyle(selector, reactStyle, { prefix = '' } = {}) {
-  const rules = Object.keys(reactStyle).map((attr) =>
-    /* eslint-disable no-multi-space */
-    `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`
-    /* eslint-enable no-multi-space */
-  ).join('\n');
+  const rules = Object.keys(reactStyle).map((attr) => {
+    return selector.indexOf('@keyframes') > -1
+    ? `  ${prefix}${attr} ${extractKeyframes(reactStyle[attr], prefix)}`
+    : `  ${recase.paramCase(attr)}: ${reactStyle[attr]};`;
+  }).join('\n');
   return `${prefix}${selector} {\n${rules}\n}`;
 }
 
@@ -30,7 +38,7 @@ function extractAllStyles(Components) {
 function styles(newStyles, opts) {
   return (Component) => Object.assign(class extends Component {
     static styles = Object.assign({}, Component.styles || {}, newStyles);
-  }, { [stylesOpts]: opts })
+  }, { [stylesOpts]: opts });
 }
 
 export default { extractStyle, extractStyles, extractAllStyles, styles, stylesOpts };
