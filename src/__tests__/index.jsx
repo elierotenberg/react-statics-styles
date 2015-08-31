@@ -6,6 +6,7 @@ import CreateClassComponent from './CreateClassComponent';
 import ES6ClassComponent from './ES6ClassComponent';
 import ES6ClassDecorator from './ES6ClassDecorator';
 import ES6ClassDecoratorWithPrefix from './ES6ClassDecoratorWithPrefix';
+import Keyframes from './Keyframes';
 
 describe('CreateClassComponent', () =>
   it('should extract the correct CSS', () =>
@@ -49,6 +50,33 @@ describe('ES6ClassDecoratorWithPrefix', () =>
       '/* @react-statics-styles ES6ClassDecoratorWithPrefix */',
       '.MyApp .ES6ClassDecoratorWithPrefix {',
       '  min-width: 334px;',
+      '}',
+      '',
+    ].join('\n'))
+  )
+);
+
+describe('Keyframes', () =>
+  it('should extract the correct CSS', () =>
+    extractStyles(Keyframes).should.be.exactly([
+      '/* @react-statics-styles Keyframes */',
+      '@keyframes animationFromTo {',
+      '  from {',
+      '    transform: rotate(0deg);',
+      '    top: 0px;',
+      '  }',
+      '  to {',
+      '    transform: rotate(360deg);',
+      '    top: 100px;',
+      '  }',
+      '}',
+      '@keyframes animationPercent {',
+      '  0% {',
+      '    opacity: 0;',
+      '  }',
+      '  100% {',
+      '    opacity: 1;',
+      '  }',
       '}',
       '',
     ].join('\n'))
